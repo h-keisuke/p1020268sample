@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>郵便番号検索</title>
+</head>
+<body>
+  <div>
+    <form th:action="@{/}" method="POST" th:object="${searchForm}">
+      <h1>郵便番号で住所が検索できます。</h1>
+      郵便番号: <input type="text" name="zip" th:field="*{zip}" placeholder="1400000" />
+      <span th:errors="*{zip}"></span>
+      <button type="submit">検索</button>
+    </form>
+  </div>
+
+</body>
+</html>
