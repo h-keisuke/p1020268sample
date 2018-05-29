@@ -2,19 +2,24 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>郵便番号検索結果</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
+  <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body>
-  <div>
-    <p th:each="address : ${addresses}" >
-      <span th:text="${address.address1}"></span>
-      <span th:text="${address.address2}"></span>
-      <span th:text="${address.address3}"></span>
-    </p>
-    <p>
-      <span th:text="${errorMessage}"></span>
-    </p>
-    <p><a th:href="@{/}">入力画面へ戻る</a></p>
-  </div>
+  <section class="section">
+    <div class="container">
+      <p th:each="address : ${addresses}" >
+        <span th:text="${address.address1}"></span>
+        <span th:text="${address.address2}"></span>
+        <span th:text="${address.address3}"></span>
+      </p>
+      <p>
+        <span th:text="${errorMessage}"></span>
+      </p>
+      <p><a th:href="@{/}">入力画面へ戻る</a></p>
+    </div>
+  </section>
 </body>
 </html>

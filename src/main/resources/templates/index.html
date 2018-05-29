@@ -2,17 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>郵便番号検索</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>
+  <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 </head>
 <body>
-  <div>
-    <form th:action="@{/}" method="POST" th:object="${searchForm}">
-      <h1>郵便番号で住所が検索できます。</h1>
-      郵便番号: <input type="text" name="zip" th:field="*{zip}" placeholder="1400000" />
-      <p th:errors="*{zip}"></p>
-      <button type="submit">検索</button>
-    </form>
-  </div>
+  <section class="section">
+    <div class="container">
+      <form th:action="@{/}" method="POST" th:object="${searchForm}">
+        <h1 class="title">郵便番号で住所が検索できます。</h1>
 
+        <div class="field">
+          <label for="zip" class="label">郵便番号</label>
+          <div class="control">
+            <input class="input is-success" id="zip" type="text" name="zip" th:field="*{zip}" placeholder="1400000" />
+          </div>
+          <p class="help is-danger" th:errors="*{zip}"></p>
+         </div>
+
+        <div class="field">
+          <div class="control">
+            <button class="button is-link" type="submit">検索</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 </body>
 </html>
