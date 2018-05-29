@@ -22,7 +22,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.github.khanamura'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 10
 
 ext["thymeleaf.version"] = "3.0.9.RELEASE"
 ext["thymeleaf-layout-dialect.version"] = "2.3.0"
@@ -53,6 +53,7 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
   compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")
+  compile("com.github.kittinunf.fuel:fuel:1.13.0")
 	testRuntime("org.junit.platform:junit-platform-launcher:1.2.0")
 	testCompile("org.junit.jupiter:junit-jupiter-api:${junit5Version}")
 	testRuntime("org.junit.jupiter:junit-jupiter-engine:${junit5Version}")

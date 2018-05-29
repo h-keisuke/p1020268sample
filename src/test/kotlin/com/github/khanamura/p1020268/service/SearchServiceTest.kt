@@ -19,9 +19,14 @@ class SearchServiceTest {
   @Test
   fun search(){
     val result1 = searchService.search("1400011")
-    assertEquals(result1.size, 1)
-    assertEquals(result1[0].address1, "東京都")
-    assertEquals(result1[0].address2, "品川区")
-    assertEquals(result1[0].address2, "東大井")
+    if(result1 == null){
+      fail("result is null")
+    }else {
+      assertEquals(result1.size, 1)
+      assertEquals(result1[0].address1, "東京都")
+      assertEquals(result1[0].address2, "品川区")
+      assertEquals(result1[0].address3, "東大井")
+    }
+
   }
 }

@@ -5,4 +5,8 @@ module com.hithub.khanamura.p1020268sample{
   requires spring.boot.autoconfigure;
   requires kotlin.stdlib;
   requires spring.web;
+  requires fuel;
+  requires result;
+  requires com.fasterxml.jackson.databind;
+  requires com.fasterxml.jackson.module.kotlin;
 }
