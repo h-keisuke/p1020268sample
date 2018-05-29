@@ -6,8 +6,15 @@
 </head>
 <body>
   <div>
-
-    <a th:href="@{/}">入力画面へ戻る</a>
+    <p th:each="address : ${addresses}" >
+      <span th:text="${address.address1}"></span>
+      <span th:text="${address.address2}"></span>
+      <span th:text="${address.address3}"></span>
+    </p>
+    <p>
+      <span th:text="${errorMessage}"></span>
+    </p>
+    <p><a th:href="@{/}">入力画面へ戻る</a></p>
   </div>
 </body>
 </html>

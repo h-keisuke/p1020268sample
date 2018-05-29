@@ -16,10 +16,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension
 class SearchServiceTest {
 
   @Autowired
-  lateinit var searchService: SearchService
+  private lateinit var searchService: SearchService
 
   @Test
   fun search(){
+
     val result1 = searchService.search("1400011")
     when (result1) {
       is Result.Failure -> {

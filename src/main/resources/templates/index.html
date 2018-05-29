@@ -9,7 +9,7 @@
     <form th:action="@{/}" method="POST" th:object="${searchForm}">
       <h1>郵便番号で住所が検索できます。</h1>
       郵便番号: <input type="text" name="zip" th:field="*{zip}" placeholder="1400000" />
-      <span th:errors="*{zip}"></span>
+      <p th:errors="*{zip}"></p>
       <button type="submit">検索</button>
     </form>
   </div>
