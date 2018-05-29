@@ -13,18 +13,24 @@ import org.springframework.stereotype.Service
 @Service
 class SearchService {
 
-  fun search(zip: String): List<Address>? {
+  fun search(zip: String): Result<List<Address>, Exception> {
     val (request, response, result) =
       "http://zipcloud.ibsnet.co.jp/api/search?zipcode=$zip".httpGet().responseString()
     return when (result) {
       is Result.Failure -> {
-        null
+        Result.error(Exception(result.error))
       }
 
       is Result.Success -> {
         val data = result.get()
         val objectMapper = ObjectMapper().registerKotlinModule()
-        objectMapper.readValue<SearchResult>(data).results
+        val searchResult = objectMapper.readValue<SearchResult>(data)
+        if (searchResult.status == 200){
+          Result.of(searchResult.results)
+        } else {
+          Result.error(Exception(searchResult.message))
+        }
+
       }
     }
   }
