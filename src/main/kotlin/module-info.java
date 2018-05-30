@@ -1,4 +1,4 @@
-module com.hithub.khanamura.p1020268sample{
+module com.hithub.khanamura.p1020268sample {
   requires spring.core;
   requires spring.boot;
   requires spring.context;

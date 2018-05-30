@@ -45,6 +45,9 @@ repositories {
   jcenter()
 }
 
+configurations {
+  ktlint
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -54,6 +57,9 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect")
   compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.5")
   compile("com.github.kittinunf.fuel:fuel:1.13.0")
+
+  ktlint("com.github.shyiko:ktlint:0.23.1")
+
 	testRuntime("org.junit.platform:junit-platform-launcher:1.2.0")
 	testCompile("org.junit.jupiter:junit-jupiter-api:${junit5Version}")
 	testRuntime("org.junit.jupiter:junit-jupiter-engine:${junit5Version}")
@@ -69,4 +75,22 @@ test {
 		includeEngines 'junit-jupiter'
 		// excludeEngines 'junit-vintage'
 	}
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+  description = "Check Kotlin code style."
+  main = "com.github.shyiko.ktlint.Main"
+  classpath = configurations.ktlint
+  args "src/**/*.kt"
+  // to generate report in checkstyle format prepend following args:
+  // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+  // see https://github.com/shyiko/ktlint#usage for more
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+  description = "Fix Kotlin code style deviations."
+  main = "com.github.shyiko.ktlint.Main"
+  classpath = configurations.ktlint
+  args "-F", "src/**/*.kt"
 }
